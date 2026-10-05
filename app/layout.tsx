@@ -55,7 +55,7 @@ export default function RootLayout({
         <Background />
         <ScrollProgress />
         <Navbar />
-        <main id="main-content">{children}</main>
+        <main id="main-content" className="relative z-10">{children}</main>
         <Footer />
         <CursorWrapper />
       </body>

@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, Variants, TargetAndTransition } from 'motion/react';
-import { clipReveal } from '@/lib/animations/variants';
+import { motion } from 'motion/react';
+import { ease } from '@/lib/animations/variants';
 
 interface RevealTextProps {
   children: React.ReactNode;
@@ -10,31 +10,24 @@ interface RevealTextProps {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span' | 'div';
 }
 
-export function RevealText({ children, className, delay, as = 'div' }: RevealTextProps) {
-  const variants: Variants = delay && clipReveal
-    ? {
-        hidden: clipReveal.hidden,
-        visible: {
-          ...(clipReveal.visible as TargetAndTransition),
-          transition: {
-            ...((clipReveal.visible as TargetAndTransition)?.transition || {}),
-            delay,
-          },
-        },
-      }
-    : clipReveal;
-
+export function RevealText({ children, className, delay = 0, as = 'div' }: RevealTextProps) {
   const MotionComponent = motion[as] || motion.div;
 
   return (
     <MotionComponent
-      variants={variants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-50px' }}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05, margin: '0px' }}
+      transition={{
+        duration: 0.5,
+        delay,
+        ease,
+      }}
       className={className}
     >
       {children}
     </MotionComponent>
   );
 }
+
+export default RevealText;

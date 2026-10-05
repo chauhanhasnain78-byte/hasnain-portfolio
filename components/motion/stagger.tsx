@@ -14,10 +14,12 @@ export function StaggerContainer({ children, className }: StaggerContainerProps)
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-50px' }}
+      viewport={{ once: true, amount: 0.05, margin: '0px' }}
       className={className}
     >
       {children}
     </motion.div>
   );
 }
+
+export default StaggerContainer;

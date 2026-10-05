@@ -18,12 +18,11 @@ const heroStagger: Variants = {
 };
 
 const heroHeadline: Variants = {
-  hidden: { opacity: 0, y: 30, filter: 'blur(8px)' },
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.8, ease },
+    transition: { duration: 0.7, ease },
   },
 };
 

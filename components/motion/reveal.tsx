@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, Variants, TargetAndTransition } from 'motion/react';
-import { fadeUp, fadeIn } from '@/lib/animations/variants';
+import { motion } from 'motion/react';
+import { ease } from '@/lib/animations/variants';
 
 interface RevealProps {
   children: React.ReactNode;
@@ -10,31 +10,22 @@ interface RevealProps {
   direction?: 'up' | 'none';
 }
 
-export function Reveal({ children, className, delay, direction = 'up' }: RevealProps) {
-  const baseVariant = direction === 'up' ? fadeUp : fadeIn;
-  
-  const variants: Variants = delay && baseVariant
-    ? {
-        hidden: baseVariant.hidden,
-        visible: {
-          ...(baseVariant.visible as TargetAndTransition),
-          transition: {
-            ...((baseVariant.visible as TargetAndTransition)?.transition || {}),
-            delay,
-          },
-        },
-      }
-    : baseVariant;
-
+export function Reveal({ children, className, delay = 0, direction = 'up' }: RevealProps) {
   return (
     <motion.div
-      variants={variants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-50px' }}
+      initial={{ opacity: 0, y: direction === 'up' ? 20 : 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05, margin: '0px' }}
+      transition={{
+        duration: 0.5,
+        delay,
+        ease,
+      }}
       className={className}
     >
       {children}
     </motion.div>
   );
 }
+
+export default Reveal;
