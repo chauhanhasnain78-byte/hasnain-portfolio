@@ -3,8 +3,8 @@
 
 import type { Variants, Transition } from "motion/react";
 
-// Primary easing curve — smooth, premium feel
-export const ease = [0.22, 1, 0.36, 1] as const;
+// Primary easing curve — smooth, premium feel (cubic-bezier 4-tuple)
+export const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 // Standard durations
 export const duration = {
@@ -17,7 +17,7 @@ export const duration = {
 // Shared transition
 export const transition: Transition = {
   duration: duration.normal,
-  ease: ease as unknown as number[],
+  ease,
 };
 
 // Fade up — the primary reveal animation
@@ -51,7 +51,7 @@ export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: duration.normal, ease: ease as unknown as number[] },
+    transition: { duration: duration.normal, ease },
   },
 };
 
@@ -64,7 +64,7 @@ export const scaleUp: Variants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: duration.slow, ease: ease as unknown as number[] },
+    transition: { duration: duration.slow, ease },
   },
 };
 
@@ -78,6 +78,7 @@ export const stagger: Variants = {
     },
   },
 };
+export const staggerContainer = stagger;
 
 // Hero-specific stagger (slower, more dramatic)
 export const heroStagger: Variants = {
@@ -103,7 +104,7 @@ export const heroHeadline: Variants = {
     filter: "blur(0px)",
     transition: {
       duration: duration.hero,
-      ease: ease as unknown as number[],
+      ease,
     },
   },
 };
@@ -119,7 +120,7 @@ export const clipReveal: Variants = {
     opacity: 1,
     transition: {
       duration: duration.slow,
-      ease: ease as unknown as number[],
+      ease,
     },
   },
 };
@@ -130,6 +131,6 @@ export const navItem: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: duration.fast, ease: ease as unknown as number[] },
+    transition: { duration: duration.fast, ease },
   },
 };
