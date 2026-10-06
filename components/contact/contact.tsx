@@ -178,6 +178,7 @@ export default function Contact() {
                 href={LINKS.socialCvRepo} 
                 target="_blank" 
                 rel="noopener noreferrer" 
+                aria-label="GitHub Social-CV Repository, opens in a new tab"
                 className="bg-surface border border-white/[0.08] rounded-lg p-4 flex justify-between items-center hover:border-white/[0.14] transition-colors min-h-[44px]"
               >
                 <span className="font-medium text-text">GitHub</span>
@@ -188,6 +189,7 @@ export default function Contact() {
                 href={LINKS.instagram} 
                 target="_blank" 
                 rel="noopener noreferrer" 
+                aria-label="Instagram, opens in a new tab"
                 className="bg-surface border border-white/[0.08] rounded-lg p-4 flex justify-between items-center hover:border-white/[0.14] transition-colors min-h-[44px]"
               >
                 <span className="font-medium text-text">Instagram</span>
@@ -196,6 +198,7 @@ export default function Contact() {
 
               <a 
                 href={`mailto:${SITE.email}`} 
+                aria-label={`Send email to ${SITE.email}`}
                 className="bg-surface border border-white/[0.08] rounded-lg p-4 flex justify-between items-center hover:border-white/[0.14] transition-colors min-h-[44px]"
               >
                 <span className="font-medium text-text">Email</span>
@@ -207,6 +210,7 @@ export default function Contact() {
                   href={LINKS.linkedin} 
                   target="_blank" 
                   rel="noopener noreferrer" 
+                  aria-label="LinkedIn, opens in a new tab"
                   className="bg-surface border border-white/[0.08] rounded-lg p-4 flex justify-between items-center hover:border-white/[0.14] transition-colors min-h-[44px]"
                 >
                   <span className="font-medium text-text">LinkedIn</span>

@@ -10,7 +10,7 @@ export const SITE = {
   email: "chauhanhasnain78@gmail.com",
   location: "Mumbai, India",
   siteUrl:
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://hasnain-portfolio-orpin.vercel.app",
   description:
     "Portfolio of Chauhan Mohammed Hasnain, a Computer Science student and web developer from Mumbai exploring modern web development, AI tools and digital products.",
   tagline: "Building things with curiosity and code.",

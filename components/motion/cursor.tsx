@@ -36,7 +36,7 @@ export default function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 200, mass: 0.1 };
+  const springConfig = { damping: 28, stiffness: 220, mass: 0.1 };
   const x = useSpring(cursorX, springConfig);
   const y = useSpring(cursorY, springConfig);
 
@@ -53,15 +53,15 @@ export default function CustomCursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      const viewEl = target.closest('[data-cursor="view"]');
       const clickable = target.closest('a, button, [data-cursor]');
       
-      if (clickable) {
+      if (viewEl) {
         setIsHovering(true);
-        if (clickable.getAttribute('data-cursor') === 'view') {
-          setHoverText('VIEW');
-        } else {
-          setHoverText(null);
-        }
+        setHoverText('VIEW');
+      } else if (clickable) {
+        setIsHovering(true);
+        setHoverText(null);
       } else {
         setIsHovering(false);
         setHoverText(null);
@@ -102,12 +102,14 @@ export default function CustomCursor() {
       className={`fixed top-0 left-0 z-50 pointer-events-none rounded-full flex items-center justify-center transition-all duration-300 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       } ${
-        isHovering || hoverText 
-          ? 'w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-bold'
-          : 'w-4 h-4 bg-white mix-blend-difference'
+        hoverText
+          ? 'w-20 h-20 bg-accent/20 backdrop-blur-md border border-accent/50 text-white text-[11px] font-bold tracking-[0.2em] shadow-[0_0_30px_rgba(47,107,255,0.35)]'
+          : isHovering
+          ? 'w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20'
+          : 'w-3.5 h-3.5 bg-white mix-blend-difference'
       }`}
     >
-      {hoverText && <span>{hoverText}</span>}
+      {hoverText && <span className="select-none pl-0.5">{hoverText}</span>}
     </motion.div>
   );
 }
