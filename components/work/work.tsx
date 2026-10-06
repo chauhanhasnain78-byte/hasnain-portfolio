@@ -10,7 +10,7 @@ export function Work() {
   const hasPreview = socialCvPreviewExists();
 
   return (
-    <section id="work" className="py-24 md:py-32 scroll-mt-20">
+    <section id="work" className="py-24 md:py-32 scroll-mt-20 relative">
       <Container>
         <div className="mb-16 flex flex-col gap-4">
           <RevealText as="h2" className="text-3xl font-bold tracking-tight text-text md:text-4xl">
@@ -52,7 +52,8 @@ export function Work() {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent px-6 font-medium text-white transition-all hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent min-h-[44px]"
+                    aria-label={`Open ${project.title} live website, opens in a new tab`}
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent px-6 font-medium text-white transition-all hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent min-h-[44px]"
                   >
                     Live Website ↗
                   </a>
@@ -60,6 +61,7 @@ export function Work() {
                     href={project.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Open ${project.title} GitHub repository, opens in a new tab`}
                     className="inline-flex h-12 items-center justify-center rounded-full border border-white/10 bg-transparent px-6 font-medium text-text transition-all hover:bg-white/5 hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent min-h-[44px]"
                   >
                     GitHub ↗

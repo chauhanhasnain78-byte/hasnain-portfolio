@@ -16,9 +16,22 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Smooth scrolling — disabled under reduced motion */
+/* Lenis smooth scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Scroll padding for anchor links */
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 5rem;
 }
 
@@ -94,15 +107,16 @@ body {
   background: rgba(255,255,255,0.2);
 }
 
-@keyframes drift {
-  0%, 100% {
-    transform: translate(-3%, -3%);
-  }
-  50% {
-    transform: translate(3%, 3%);
-  }
+/* Masked text reveal animation for GSAP */
+.split-line {
+  overflow: hidden;
+}
+.split-line > span {
+  display: inline-block;
 }
 
-.animate-drift {
-  animation: drift 50s ease-in-out infinite alternate;
+/* Section clip-path transition */
+.section-reveal {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }

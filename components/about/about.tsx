@@ -4,7 +4,7 @@ import { SERVICES } from '@/lib/constants/site';
 import { Container } from '@/components/ui/container';
 import { Globe, Smartphone, Sparkles } from 'lucide-react';
 
-const serviceIcons: Record<string, React.ElementType> = {
+const serviceIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   globe: Globe,
   smartphone: Smartphone,
   sparkles: Sparkles,

@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { NAV } from '@/lib/constants/site';
 import { cn } from '@/lib/utils/cn';
 import { Menu, X } from 'lucide-react';
+import { getLenis } from '@/components/providers/lenis-provider';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -45,13 +46,17 @@ export default function Navbar() {
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
+    const lenis = getLenis();
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
+      lenis?.stop();
     } else {
       document.body.style.overflow = '';
+      lenis?.start();
     }
     return () => {
       document.body.style.overflow = '';
+      lenis?.start();
     };
   }, [isMobileMenuOpen]);
 
@@ -68,6 +73,23 @@ export default function Navbar() {
 
   const closeMenu = () => setIsMobileMenuOpen(false);
 
+  // Scroll to section using Lenis for smooth scroll with offset
+  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    closeMenu();
+
+    const lenis = getLenis();
+    const target = document.querySelector(href);
+    if (target) {
+      if (lenis) {
+        lenis.scrollTo(target as HTMLElement, { offset: -80 });
+      } else {
+        // Fallback if Lenis not loaded (reduced motion)
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
+
   return (
     <>
       <header className="fixed top-4 left-4 right-4 z-50 pointer-events-none">
@@ -75,14 +97,14 @@ export default function Navbar() {
           className={cn(
             "max-w-6xl mx-auto flex items-center justify-between",
             "border border-white/[0.08] rounded-full px-6 transition-all duration-300 pointer-events-auto",
-            "bg-bg/95 md:bg-bg/80 md:backdrop-blur-md", // solid fallback for mobile, blur for desktop
-            isScrolled ? "py-2 shadow-lg" : "py-3"
+            "bg-bg/80 backdrop-blur-xl backdrop-saturate-150",
+            isScrolled ? "py-2 shadow-lg shadow-black/20" : "py-3"
           )}
         >
           <a 
             href="#home" 
             className="font-bold text-lg text-text tracking-tight min-h-[44px] min-w-[44px] flex items-center"
-            onClick={closeMenu}
+            onClick={(e) => scrollToSection(e, '#home')}
           >
             HASNAIN.
           </a>
@@ -94,13 +116,17 @@ export default function Navbar() {
                 <a
                   key={item.label}
                   href={item.href}
+                  onClick={(e) => scrollToSection(e, item.href)}
                   aria-current={isActive ? 'true' : undefined}
                   className={cn(
-                    "text-sm font-medium transition-colors hover:text-text",
+                    "text-sm font-medium transition-colors hover:text-text relative",
                     isActive ? "text-text" : "text-text-secondary"
                   )}
                 >
                   {item.label}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-accent rounded-full" />
+                  )}
                 </a>
               );
             })}
@@ -109,6 +135,7 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <a 
               href="#contact" 
+              onClick={(e) => scrollToSection(e, '#contact')}
               className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-accent text-white text-sm font-medium hover:bg-accent/90 transition-colors"
             >
               Let&apos;s Talk ↗
@@ -136,8 +163,8 @@ export default function Navbar() {
         className={cn(
           "fixed inset-0 z-[100] bg-bg flex flex-col transition-all duration-300 ease-in-out",
           isMobileMenuOpen 
-            ? "opacity-100 clip-path-full pointer-events-auto" 
-            : "opacity-0 clip-path-top pointer-events-none"
+            ? "opacity-100 pointer-events-auto" 
+            : "opacity-0 pointer-events-none"
         )}
         style={{
           clipPath: isMobileMenuOpen ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)'
@@ -161,7 +188,7 @@ export default function Navbar() {
               <a
                 key={item.label}
                 href={item.href}
-                onClick={closeMenu}
+                onClick={(e) => scrollToSection(e, item.href)}
                 aria-current={isActive ? 'true' : undefined}
                 className={cn(
                   "text-3xl font-bold transition-colors min-h-[44px] flex items-center",
@@ -174,7 +201,7 @@ export default function Navbar() {
           })}
           <a
             href="#contact"
-            onClick={closeMenu}
+            onClick={(e) => scrollToSection(e, '#contact')}
             className="mt-4 inline-flex items-center justify-center px-8 py-4 rounded-full bg-accent text-white text-lg font-medium"
           >
             Let&apos;s Talk ↗

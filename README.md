@@ -115,32 +115,37 @@ The site utilizes a curated dark cinematic palette:
 
 ---
 
-## ⚡ Performance & Motion System
+## ⚡ 3D Cinematic Motion & Performance System
 
-- **Bundle Optimization:** Powered by `LazyMotion` with `domAnimation` from `motion/react`.
-- **Accessibility:** Fully honors `prefers-reduced-motion: reduce`. All looping animations, parallax, 3D tilt, and custom cursors automatically deactivate under reduced motion.
-- **Hardware Acceleration:** Only animates `transform`, `opacity`, and `clip-path`.
-- **Zero Heavy WebGL:** Hero visuals and background compositions are built with lightweight SVG, CSS gradients, and keyframes.
-- **Micro-Interactions (Desktop Only):**
-  - Interactive 3D tilt on the Social-CV browser frame.
-  - Smooth custom cursor that highlights interactive elements and shows `VIEW` over projects.
-  - Active section observer in the floating pill navbar with mobile fullscreen drawer.
+- **3D Engine:** Powered by **Three.js**, **@react-three/fiber**, and **@react-three/drei** with custom shader transmission glass centerpiece, depth particle systems, and atmospheric lighting.
+- **Smooth Inertial Scroll:** Powered by **Lenis** unified with **GSAP ScrollTrigger** on a shared requestAnimationFrame loop with keyframed 3D camera journeys.
+- **Single Quality Config:** All 3D parameters (DPR caps, particle counts, geometry detail, camera FOV, and mobile thresholds) can be tuned in `lib/config/quality.ts`.
+- **Adaptive Quality:** Uses drei `PerformanceMonitor` and `AdaptiveDpr` to automatically adjust resolution and particles if frame rates fluctuate.
+- **Accessibility & Fallbacks:** Automatically falls back to a calm CSS gradient if WebGL is unavailable or if `prefers-reduced-motion` is active.
+- **Zero Layout Shifts:** Background 3D canvas is fixed behind real semantic DOM elements, ensuring SEO and accessibility remain 100% unaffected.
+
+---
+
+## ⚙️ Environment Variables
+
+Create `.env.local` or configure in Vercel:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://hasnain-portfolio-orpin.vercel.app
+```
+
+Used by Next.js metadata, Open Graph URL, Twitter cards, sitemap (`sitemap.xml`), and robots (`robots.txt`).
 
 ---
 
 ## 🚢 Deploying to Vercel
 
-1. Push this repository to GitHub:
+1. Push your branch to GitHub:
    ```bash
-   git init
    git add .
-   git commit -m "Initial commit: Chauhan Mohammed Hasnain Portfolio"
-   git branch -M main
-   git remote add origin https://github.com/chauhanhasnain-78-byte/<repo-name>.git
-   git push -u origin main
+   git commit -m "feat: elite 3d cinematic portfolio upgrade"
+   git push origin elite-3d
    ```
-2. Import the repository on [Vercel](https://vercel.com/new).
-3. Framework Preset: **Next.js**
-4. Root Directory: `portfolio` (or root if moved to top-level).
-5. (Optional) Set `NEXT_PUBLIC_SITE_URL` to your production domain.
-6. Click **Deploy**.
+2. In your Vercel Dashboard for `hasnain-portfolio`:
+   - Add environment variable `NEXT_PUBLIC_SITE_URL` = `https://hasnain-portfolio-orpin.vercel.app`
+3. Merge `elite-3d` into `main` (or deploy directly from `elite-3d`). Vercel will build and deploy automatically!

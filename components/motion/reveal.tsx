@@ -2,12 +2,14 @@
 
 import { motion } from 'motion/react';
 import { ease } from '@/lib/animations/variants';
+import type React from 'react';
 
 interface RevealProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   direction?: 'up' | 'none';
+  key?: React.Key;
 }
 
 export function Reveal({ children, className, delay = 0, direction = 'up' }: RevealProps) {

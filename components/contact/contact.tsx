@@ -85,10 +85,29 @@ export default function Contact() {
             <div>
               <h3 className="text-xl font-bold text-text mb-6">Send a message</h3>
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-5" noValidate>
-                {/* Honeypot */}
-                <div className="sr-only" aria-hidden="true">
+                {/* Honeypot field - visually hidden and unreachable */}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    left: '-9999px',
+                    top: '-9999px',
+                    width: '1px',
+                    height: '1px',
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    overflow: 'hidden',
+                  }}
+                >
                   <label htmlFor="website">Website</label>
-                  <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    autoComplete="off"
+                  />
                 </div>
 
                 <div>

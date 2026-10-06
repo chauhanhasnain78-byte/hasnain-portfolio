@@ -5,7 +5,8 @@ import { SITE } from '@/lib/constants/site';
 import Navbar from '@/components/navbar/navbar';
 import Footer from '@/components/footer/footer';
 import ScrollProgress from '@/components/motion/scroll-progress';
-import Background from '@/components/motion/background';
+import SceneWrapper from '@/components/canvas/scene-wrapper';
+import LenisProvider from '@/components/providers/lenis-provider';
 import CursorWrapper from '@/components/motion/cursor-wrapper';
 
 const geist = Geist({
@@ -52,12 +53,14 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <Background />
-        <ScrollProgress />
-        <Navbar />
-        <main id="main-content" className="relative z-10">{children}</main>
-        <Footer />
-        <CursorWrapper />
+        <LenisProvider>
+          <SceneWrapper />
+          <ScrollProgress />
+          <Navbar />
+          <main id="main-content" className="relative z-10">{children}</main>
+          <Footer />
+          <CursorWrapper />
+        </LenisProvider>
       </body>
     </html>
   );

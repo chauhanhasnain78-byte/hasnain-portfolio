@@ -2,12 +2,14 @@
 
 import { motion } from 'motion/react';
 import { ease } from '@/lib/animations/variants';
+import type React from 'react';
 
 interface RevealTextProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span' | 'div';
+  key?: React.Key;
 }
 
 export function RevealText({ children, className, delay = 0, as = 'div' }: RevealTextProps) {

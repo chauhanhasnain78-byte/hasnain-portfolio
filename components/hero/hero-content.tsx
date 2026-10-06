@@ -1,28 +1,29 @@
 'use client';
 
 import { LazyMotion, domAnimation, m, MotionConfig, type Variants } from 'motion/react';
-import Link from 'next/link';
 import { SOCIALS } from '@/lib/constants/site';
 import { SocialLink } from '@/components/ui/social-link';
 import { ease } from '@/lib/animations/variants';
-import { ReactNode } from 'react';
+import { ReactNode, useCallback } from 'react';
+import { getLenis } from '@/components/providers/lenis-provider';
 
 const heroStagger: Variants = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.15,
+      staggerChildren: 0.12,
+      delayChildren: 0.2,
     },
   },
 };
 
 const heroHeadline: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30, filter: 'blur(6px)' },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease },
+    filter: 'blur(0px)',
+    transition: { duration: 0.8, ease },
   },
 };
 
@@ -40,6 +41,19 @@ interface HeroContentProps {
 }
 
 export function HeroContent({ visual }: HeroContentProps) {
+  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const lenis = getLenis();
+    const target = document.querySelector(href);
+    if (target) {
+      if (lenis) {
+        lenis.scrollTo(target as HTMLElement, { offset: -80 });
+      } else {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
+
   return (
     <LazyMotion features={domAnimation}>
       <MotionConfig reducedMotion="user">
@@ -65,18 +79,20 @@ export function HeroContent({ visual }: HeroContentProps) {
             </m.p>
 
             <m.div variants={heroFade} className="flex flex-wrap items-center gap-4">
-              <Link
+              <a
                 href="#work"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-accent px-8 font-medium text-white transition-all hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent min-h-[44px]"
+                onClick={(e) => scrollToSection(e, '#work')}
+                className="inline-flex h-12 items-center justify-center rounded-full bg-accent px-8 font-medium text-white transition-all hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent min-h-[44px]"
               >
                 View My Work →
-              </Link>
-              <Link
+              </a>
+              <a
                 href="#resume"
+                onClick={(e) => scrollToSection(e, '#resume')}
                 className="inline-flex h-12 items-center justify-center rounded-full border border-white/10 bg-transparent px-8 font-medium text-text transition-all hover:bg-white/5 hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent min-h-[44px]"
               >
                 View Resume ↗
-              </Link>
+              </a>
             </m.div>
 
             <m.div variants={heroFade} className="flex items-center gap-3 pt-2">
