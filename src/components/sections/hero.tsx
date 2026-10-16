@@ -155,18 +155,20 @@ export function HeroSection({ hasProfilePhoto }: HeroSectionProps) {
 
             {/* 2. Eyebrow Line */}
             <motion.p
-              className="text-[clamp(0.688rem,1vw,0.813rem)] tracking-[0.25em] text-[#92929A] uppercase font-medium"
+              className="text-[clamp(0.688rem,1vw,0.813rem)] tracking-[0.25em] text-blue-400 uppercase font-semibold flex items-center gap-2 flex-wrap"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              {HERO_CONTENT.eyebrow} • <span className="text-[#62626B]">{SITE_CONFIG.location}</span>
+              <span>{HERO_CONTENT.eyebrow}</span>
+              <span className="text-slate-400 font-normal">•</span>
+              <span className="text-slate-300 font-normal">{SITE_CONFIG.location}</span>
             </motion.p>
 
             {/* 3. Supporting lines */}
-            <div className="space-y-2 max-w-xl">
+            <div className="space-y-2.5 max-w-xl">
               <motion.p
-                className="text-[clamp(1rem,1.5vw,1.25rem)] text-[#F5F5F5] font-medium leading-snug"
+                className="text-[clamp(1rem,1.5vw,1.25rem)] text-white font-semibold leading-snug drop-shadow-sm"
                 initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
                 animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
                 transition={{ duration: 0.6, delay: 0.95 }}
@@ -174,7 +176,7 @@ export function HeroSection({ hasProfilePhoto }: HeroSectionProps) {
                 {HERO_CONTENT.tagline}
               </motion.p>
               <motion.p
-                className="text-[clamp(0.938rem,1.2vw,1.125rem)] text-[#92929A] leading-relaxed"
+                className="text-[clamp(0.938rem,1.2vw,1.125rem)] text-slate-300 leading-relaxed font-normal"
                 initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
                 animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
                 transition={{ duration: 0.6, delay: 1.05 }}
@@ -183,32 +185,32 @@ export function HeroSection({ hasProfilePhoto }: HeroSectionProps) {
               </motion.p>
             </div>
 
-            {/* 4. Action Buttons */}
+            {/* 4. Action Buttons (High contrast radiant + elevated secondary) */}
             <motion.div
-              className="flex flex-wrap items-center gap-4 pt-2"
+              className="flex flex-wrap items-center gap-4 pt-3"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 1.2 }}
             >
               <a
                 href="#work"
-                className="group relative inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#050505] bg-[#F5F5F5] rounded-full hover:bg-white hover:shadow-[0_0_25px_rgba(255,255,255,0.25)] transition-all min-h-[44px]"
+                className="group relative inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-[#070709] bg-white rounded-full hover:bg-slate-100 hover:shadow-[0_0_28px_rgba(255,255,255,0.4)] transition-all min-h-[46px] hover:scale-105 active:scale-95"
               >
                 <span>View My Work</span>
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
               <a
                 href="#resume"
-                className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-medium text-[#F5F5F5] rounded-full border border-[rgba(255,255,255,0.12)] hover:border-[rgba(255,255,255,0.3)] hover:bg-[rgba(255,255,255,0.04)] transition-all min-h-[44px]"
+                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-white rounded-full bg-[#161624] border border-white/20 hover:border-white/40 hover:bg-[#1E1E32] shadow-[0_4px_16px_rgba(0,0,0,0.4)] transition-all min-h-[46px] hover:scale-105 active:scale-95"
               >
                 <span>View Resume</span>
-                <span className="text-[#92929A]">↗</span>
+                <span className="text-blue-400">↗</span>
               </a>
             </motion.div>
 
             {/* 5. Social icons */}
             <motion.div
-              className="flex items-center gap-4 pt-1"
+              className="flex items-center gap-3.5 pt-2"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 1.3 }}
@@ -218,7 +220,7 @@ export function HeroSection({ hasProfilePhoto }: HeroSectionProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub, opens in a new tab"
-                className="text-[#92929A] hover:text-[#F5F5F5] hover:scale-110 transition-all p-2 rounded-full min-h-[44px] min-w-[44px] flex items-center justify-center"
+                className="text-slate-300 hover:text-white bg-[#141420] border border-white/[0.14] hover:border-blue-400 hover:bg-[#1C1C2C] shadow-md hover:scale-110 transition-all p-2.5 rounded-full min-h-[44px] min-w-[44px] flex items-center justify-center"
               >
                 <GitHubIcon className="w-5 h-5" />
               </a>
@@ -227,14 +229,14 @@ export function HeroSection({ hasProfilePhoto }: HeroSectionProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram, opens in a new tab"
-                className="text-[#92929A] hover:text-[#F5F5F5] hover:scale-110 transition-all p-2 rounded-full min-h-[44px] min-w-[44px] flex items-center justify-center"
+                className="text-slate-300 hover:text-white bg-[#141420] border border-white/[0.14] hover:border-blue-400 hover:bg-[#1C1C2C] shadow-md hover:scale-110 transition-all p-2.5 rounded-full min-h-[44px] min-w-[44px] flex items-center justify-center"
               >
                 <InstagramIcon className="w-5 h-5" />
               </a>
               <a
                 href={SOCIAL_LINKS.email}
                 aria-label="Send email"
-                className="text-[#92929A] hover:text-[#F5F5F5] hover:scale-110 transition-all p-2 rounded-full min-h-[44px] min-w-[44px] flex items-center justify-center"
+                className="text-slate-300 hover:text-white bg-[#141420] border border-white/[0.14] hover:border-blue-400 hover:bg-[#1C1C2C] shadow-md hover:scale-110 transition-all p-2.5 rounded-full min-h-[44px] min-w-[44px] flex items-center justify-center"
               >
                 <Mail className="w-5 h-5" />
               </a>

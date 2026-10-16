@@ -27,27 +27,27 @@ function MailIcon({ className }: { className?: string }) {
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-[rgba(255,255,255,0.06)]">
+    <footer className="relative border-t border-white/[0.1] bg-[#07070A]/80 backdrop-blur-xl">
       <div className="mx-auto max-w-[1280px] container-padding py-12 md:py-16">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           {/* Left */}
           <div className="space-y-3">
-            <a href="#home" className="text-xl font-bold tracking-tight text-[#F5F5F5]">
+            <a href="#home" className="text-xl font-extrabold tracking-tight text-white hover:text-blue-400 transition-colors">
               {SITE_CONFIG.logo}
             </a>
-            <p className="text-sm text-[#92929A]">
+            <p className="text-sm text-slate-400 font-normal">
               {FOOTER_CONTENT.tagline}
             </p>
           </div>
 
           {/* Social links */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3.5">
             <a
               href={SOCIAL_LINKS.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub, opens in a new tab"
-              className="text-[#92929A] hover:text-[#F5F5F5] transition-colors p-2"
+              className="text-slate-300 hover:text-white bg-[#141420] border border-white/[0.14] hover:border-blue-400 hover:bg-[#1C1C2C] shadow-md hover:scale-110 transition-all p-2.5 rounded-full"
             >
               <GitHubIcon className="w-5 h-5" />
             </a>
@@ -56,14 +56,14 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram, opens in a new tab"
-              className="text-[#92929A] hover:text-[#F5F5F5] transition-colors p-2"
+              className="text-slate-300 hover:text-white bg-[#141420] border border-white/[0.14] hover:border-blue-400 hover:bg-[#1C1C2C] shadow-md hover:scale-110 transition-all p-2.5 rounded-full"
             >
               <InstagramIcon className="w-5 h-5" />
             </a>
             <a
               href={SOCIAL_LINKS.email}
               aria-label="Send email"
-              className="text-[#92929A] hover:text-[#F5F5F5] transition-colors p-2"
+              className="text-slate-300 hover:text-white bg-[#141420] border border-white/[0.14] hover:border-blue-400 hover:bg-[#1C1C2C] shadow-md hover:scale-110 transition-all p-2.5 rounded-full"
             >
               <MailIcon className="w-5 h-5" />
             </a>
@@ -71,11 +71,11 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-8 pt-8 border-t border-[rgba(255,255,255,0.06)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <p className="text-sm text-[#62626B]">
+        <div className="mt-8 pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <p className="text-sm text-slate-400 font-normal">
             {FOOTER_CONTENT.copyright}
           </p>
-          <p className="text-sm text-[#62626B]">
+          <p className="text-sm text-slate-400 font-normal">
             {SITE_CONFIG.location}
           </p>
         </div>

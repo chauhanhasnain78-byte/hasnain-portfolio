@@ -20,7 +20,7 @@ export function SectionWrapper({ id, children, className, fullWidth = false }: S
       ref={ref}
       id={id}
       className={cn(
-        'relative section-padding',
+        'relative section-padding scroll-mt-24 sm:scroll-mt-28',
         !fullWidth && 'mx-auto max-w-[1280px] container-padding',
         className
       )}

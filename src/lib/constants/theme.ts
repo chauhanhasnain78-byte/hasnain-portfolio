@@ -1,23 +1,23 @@
 export const COLORS = {
-  base: '#050505',
+  base: '#07070A',
   surface: {
-    1: '#0A0A0C',
-    2: '#101013',
-    3: '#151519',
+    1: '#12121A',
+    2: '#161624',
+    3: '#1E1E30',
   },
   text: {
-    primary: '#F5F5F5',
-    secondary: '#92929A',
-    muted: '#62626B',
+    primary: '#FFFFFF',
+    secondary: '#CBD5E1',
+    muted: '#94A3B8',
   },
   accent: {
     blue: '#3B82F6',
     violet: '#8B5CF6',
-    blueGlow: 'rgba(59, 130, 246, 0.15)',
-    violetGlow: 'rgba(139, 92, 246, 0.15)',
+    blueGlow: 'rgba(59, 130, 246, 0.25)',
+    violetGlow: 'rgba(139, 92, 246, 0.25)',
   },
-  border: 'rgba(255, 255, 255, 0.06)',
-  borderHover: 'rgba(255, 255, 255, 0.1)',
+  border: 'rgba(255, 255, 255, 0.12)',
+  borderHover: 'rgba(255, 255, 255, 0.25)',
 } as const;
 
 export const FONT_SIZES = {

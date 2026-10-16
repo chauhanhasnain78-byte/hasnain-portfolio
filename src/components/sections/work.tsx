@@ -121,22 +121,22 @@ function ProjectScene({
           {/* Browser Container */}
           <motion.div
             style={prefersReduced || !hasFinePointer ? undefined : { rotateX, rotateY }}
-            className="relative rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[#0A0A0C] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] group-hover:border-[rgba(255,255,255,0.2)] transition-all duration-300"
+            className="relative rounded-2xl border border-white/[0.15] border-t-white/[0.28] bg-[#12121E] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] group-hover:border-blue-400/50 transition-all duration-300"
           >
             {/* Browser Chrome Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-[rgba(255,255,255,0.06)] bg-[#0D0D10]/90">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.1] bg-[#181826]">
               <div className="flex items-center gap-1.5" aria-hidden="true">
-                <span className="w-3 h-3 rounded-full bg-[#FF5F56]/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-[#FFBD2E]/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-[#27C93F]/80 inline-block" />
+                <span className="w-3 h-3 rounded-full bg-[#FF5F56] inline-block shadow-sm" />
+                <span className="w-3 h-3 rounded-full bg-[#FFBD2E] inline-block shadow-sm" />
+                <span className="w-3 h-3 rounded-full bg-[#27C93F] inline-block shadow-sm" />
               </div>
               <div className="flex-1 max-w-[260px] mx-auto">
-                <div className="bg-[#15151A] rounded-md px-3 py-1 text-[0.7rem] text-[#62626B] font-mono text-center truncate border border-[rgba(255,255,255,0.03)]">
+                <div className="bg-[#0E0E16] rounded-full px-3.5 py-1 text-[0.72rem] text-slate-300 font-mono text-center truncate border border-white/[0.1]">
                   {project.liveUrl.replace('https://', '')}
                 </div>
               </div>
               <div className="w-10 flex justify-end" aria-hidden="true">
-                <span className="text-[0.65rem] text-[#62626B]">●</span>
+                <span className="text-[0.65rem] text-blue-400">●</span>
               </div>
             </div>
 
@@ -215,17 +215,17 @@ function ProjectScene({
           </h3>
         </div>
 
-        <p className="text-[clamp(0.938rem,1.2vw,1.125rem)] text-[#92929A] leading-relaxed">
+        <p className="text-[clamp(0.938rem,1.2vw,1.125rem)] text-slate-300 leading-relaxed font-normal">
           {project.description}
         </p>
 
-        {/* Tags */}
+        {/* Elevated Tags */}
         {project.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 pt-1">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 text-xs text-[#92929A] border border-[rgba(255,255,255,0.06)] rounded-full bg-[#0A0A0C]"
+                className="px-3.5 py-1.5 text-xs text-blue-200 border border-blue-500/25 rounded-full bg-blue-500/10 font-medium shadow-sm"
               >
                 {tag}
               </span>
@@ -233,14 +233,14 @@ function ProjectScene({
           </div>
         )}
 
-        {/* Action Links Outside the Frame */}
-        <div className="flex items-center gap-6 pt-3">
+        {/* Action Links with High Contrast */}
+        <div className="flex items-center gap-4 pt-4 flex-wrap">
           <a
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open ${project.title} live website in a new tab`}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#F5F5F5] hover:text-[#3B82F6] transition-colors min-h-[44px] group"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold text-[#070709] bg-white hover:bg-slate-100 shadow-[0_0_20px_rgba(255,255,255,0.25)] transition-all min-h-[44px] group hover:scale-105"
           >
             <span>Live Website</span>
             <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -250,11 +250,11 @@ function ProjectScene({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`View ${project.title} on GitHub, opens in a new tab`}
-            className="inline-flex items-center gap-2 text-sm text-[#92929A] hover:text-[#F5F5F5] transition-colors min-h-[44px] group"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white bg-[#161624] border border-white/20 hover:border-white/40 hover:bg-[#1E1E32] shadow-md transition-all min-h-[44px] group hover:scale-105"
           >
             <GitHubIcon className="w-4 h-4" />
             <span>GitHub</span>
-            <span className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+            <span className="text-blue-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
           </a>
         </div>
       </motion.div>

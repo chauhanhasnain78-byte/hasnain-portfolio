@@ -78,7 +78,7 @@ export function Navbar() {
   const handleNavClick = useCallback(
     (href: string) => {
       setIsMobileMenuOpen(false);
-      scrollTo(href, -80);
+      scrollTo(href, -100);
     },
     [scrollTo]
   );
@@ -97,7 +97,7 @@ export function Navbar() {
           className={cn(
             'mx-auto flex items-center justify-between transition-all duration-500 container-padding',
             isScrolled
-              ? 'rounded-full border border-[rgba(255,255,255,0.06)] bg-[rgba(10,10,12,0.85)] lg:backdrop-blur-xl px-6 py-2.5'
+              ? 'rounded-full border border-white/[0.15] bg-[#0E0E18]/90 backdrop-blur-xl px-6 py-2.5 shadow-[0_10px_35px_rgba(0,0,0,0.6)]'
               : 'max-w-[1280px] py-2'
           )}
           role="navigation"
@@ -110,13 +110,13 @@ export function Navbar() {
               e.preventDefault();
               handleNavClick('#home');
             }}
-            className="text-lg font-bold tracking-tight text-[#F5F5F5] hover:text-[#3B82F6] transition-colors z-50 relative"
+            className="text-lg font-extrabold tracking-tight text-white hover:text-blue-400 transition-colors z-50 relative"
           >
             {SITE_CONFIG.logo}
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1.5 p-1 rounded-full border border-white/[0.08] bg-white/[0.03]">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
@@ -126,10 +126,10 @@ export function Navbar() {
                   handleNavClick(item.href);
                 }}
                 className={cn(
-                  'px-3 py-2 text-sm transition-colors rounded-full',
+                  'px-3.5 py-1.5 text-sm transition-all rounded-full font-medium',
                   activeSection === item.href.replace('#', '')
-                    ? 'text-[#F5F5F5] bg-[rgba(255,255,255,0.06)]'
-                    : 'text-[#92929A] hover:text-[#F5F5F5]'
+                    ? 'text-white bg-white/[0.14] border border-white/20 shadow-sm'
+                    : 'text-slate-400 hover:text-white'
                 )}
               >
                 {item.label}
@@ -144,7 +144,7 @@ export function Navbar() {
               e.preventDefault();
               handleNavClick('#contact');
             }}
-            className="hidden lg:flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#F5F5F5] rounded-full border border-[rgba(255,255,255,0.1)] hover:border-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.03)] transition-all"
+            className="hidden lg:flex items-center gap-2 px-5 py-2 text-sm font-semibold text-[#070709] bg-white hover:bg-slate-100 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.25)] transition-all hover:scale-105"
           >
             Let&apos;s Talk ↗
           </a>
@@ -179,7 +179,7 @@ export function Navbar() {
         ref={menuRef}
         id="mobile-menu"
         className={cn(
-          'fixed inset-0 z-40 bg-[#050505] transition-all duration-500 lg:hidden flex flex-col items-center justify-center',
+          'fixed inset-0 z-40 bg-[#07070A]/95 backdrop-blur-2xl transition-all duration-500 lg:hidden flex flex-col items-center justify-center',
           isMobileMenuOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
@@ -188,7 +188,7 @@ export function Navbar() {
         aria-modal="true"
         aria-label="Mobile navigation"
       >
-        <nav className="flex flex-col items-center gap-2">
+        <nav className="flex flex-col items-center gap-3 w-full max-w-xs px-4">
           {NAV_ITEMS.map((item, i) => (
             <a
               key={item.href}
@@ -199,10 +199,10 @@ export function Navbar() {
                 handleNavClick(item.href);
               }}
               className={cn(
-                'px-6 py-3 text-2xl font-light transition-all duration-300 min-h-[44px] flex items-center',
+                'w-full text-center px-6 py-3.5 text-xl font-medium rounded-2xl transition-all duration-300 min-h-[48px] flex items-center justify-center',
                 activeSection === item.href.replace('#', '')
-                  ? 'text-[#F5F5F5]'
-                  : 'text-[#92929A] hover:text-[#F5F5F5]'
+                  ? 'text-white bg-white/10 border border-white/20 shadow-md'
+                  : 'text-slate-300 hover:text-white hover:bg-white/5'
               )}
               style={{ transitionDelay: isMobileMenuOpen ? `${i * 50}ms` : '0ms' }}
             >
@@ -215,7 +215,7 @@ export function Navbar() {
               e.preventDefault();
               handleNavClick('#contact');
             }}
-            className="mt-6 px-8 py-3 text-lg font-medium text-[#F5F5F5] rounded-full border border-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.05)] transition-all min-h-[44px] flex items-center"
+            className="mt-6 w-full text-center px-8 py-3.5 text-base font-bold text-[#070709] bg-white rounded-full shadow-[0_0_25px_rgba(255,255,255,0.3)] transition-all min-h-[48px] flex items-center justify-center"
           >
             Let&apos;s Talk ↗
           </a>

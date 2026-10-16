@@ -83,23 +83,23 @@ export function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight">
+          <h2 className="text-[clamp(2rem,5vw,4rem)] font-extrabold tracking-tight text-white leading-tight">
             {CONTACT_CONTENT.heading}
           </h2>
-          <p className="text-[clamp(0.938rem,1.2vw,1.125rem)] text-[#92929A] max-w-md">
+          <p className="text-[clamp(0.938rem,1.2vw,1.125rem)] text-slate-300 max-w-md leading-relaxed font-normal">
             {CONTACT_CONTENT.description}
           </p>
 
           <a
             href={CONTACT_CONTENT.ctaHref}
-            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-[#050505] bg-[#F5F5F5] rounded-full hover:bg-white transition-colors min-h-[44px]"
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 text-sm font-bold text-[#070709] bg-white rounded-full hover:bg-slate-100 shadow-[0_0_28px_rgba(255,255,255,0.4)] transition-all min-h-[46px] hover:scale-105 active:scale-95"
           >
             <Mail className="w-4 h-4" />
-            {CONTACT_CONTENT.ctaLabel}
+            <span>{CONTACT_CONTENT.ctaLabel}</span>
           </a>
 
-          {/* Link cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4">
+          {/* Elevated Link cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-4">
             {linkCards.map((card) => (
               <a
                 key={card.label}
@@ -107,129 +107,131 @@ export function ContactSection() {
                 target={card.external ? '_blank' : undefined}
                 rel={card.external ? 'noopener noreferrer' : undefined}
                 aria-label={card.external ? `${card.label}, opens in a new tab` : card.label}
-                className="flex items-center gap-3 p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#0A0A0C] hover:border-[rgba(255,255,255,0.12)] transition-all min-h-[44px]"
+                className="surface-card surface-card-hover flex items-center gap-3.5 p-4 rounded-2xl min-h-[48px] group"
               >
-                <span className="text-[#92929A]">{card.icon}</span>
-                <span className="text-sm text-[#F5F5F5]">{card.label}</span>
+                <span className="text-blue-400 group-hover:scale-110 transition-transform">{card.icon}</span>
+                <span className="text-sm font-semibold text-white group-hover:text-blue-300 transition-colors">{card.label}</span>
               </a>
             ))}
           </div>
         </motion.div>
 
-        {/* Right - form */}
+        {/* Right - Form in elevated container */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-            {/* Honeypot */}
-            <div
-              aria-hidden="true"
-              style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}
-            >
-              <label htmlFor="honeypot">Do not fill this</label>
-              <input
-                id="honeypot"
-                name="honeypot"
-                type="text"
-                tabIndex={-1}
-                autoComplete="off"
-                value={formState.honeypot}
-                onChange={(e) => setFormState({ ...formState, honeypot: e.target.value })}
-              />
-            </div>
+          <div className="surface-card p-6 sm:p-8 rounded-3xl shadow-2xl">
+            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+              {/* Honeypot */}
+              <div
+                aria-hidden="true"
+                style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}
+              >
+                <label htmlFor="honeypot">Do not fill this</label>
+                <input
+                  id="honeypot"
+                  name="honeypot"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formState.honeypot}
+                  onChange={(e) => setFormState({ ...formState, honeypot: e.target.value })}
+                />
+              </div>
 
-            <div>
-              <label htmlFor="name" className="block text-sm text-[#92929A] mb-2">
-                Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                aria-invalid={!!errors.name}
-                aria-describedby={errors.name ? 'name-error' : undefined}
-                value={formState.name}
-                onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                className={cn(
-                  'w-full px-4 py-3 rounded-xl bg-[#0A0A0C] border text-[#F5F5F5] text-sm transition-colors focus:outline-none focus:border-[#3B82F6]',
-                  errors.name ? 'border-red-500' : 'border-[rgba(255,255,255,0.06)]'
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
+                  Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? 'name-error' : undefined}
+                  value={formState.name}
+                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                  className={cn(
+                    'w-full px-4.5 py-3.5 rounded-xl bg-[#0E0E16] border text-white text-sm transition-all focus:outline-none focus:border-blue-400 focus:bg-[#12121E] shadow-inner',
+                    errors.name ? 'border-red-500' : 'border-white/[0.14]'
+                  )}
+                  placeholder="Your name"
+                />
+                {errors.name && (
+                  <p id="name-error" className="mt-1 text-xs text-red-400" role="alert">
+                    {errors.name}
+                  </p>
                 )}
-                placeholder="Your name"
-              />
-              {errors.name && (
-                <p id="name-error" className="mt-1 text-xs text-red-400" role="alert">
-                  {errors.name}
-                </p>
-              )}
-            </div>
+              </div>
 
-            <div>
-              <label htmlFor="email" className="block text-sm text-[#92929A] mb-2">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                aria-invalid={!!errors.email}
-                aria-describedby={errors.email ? 'email-error' : undefined}
-                value={formState.email}
-                onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                className={cn(
-                  'w-full px-4 py-3 rounded-xl bg-[#0A0A0C] border text-[#F5F5F5] text-sm transition-colors focus:outline-none focus:border-[#3B82F6]',
-                  errors.email ? 'border-red-500' : 'border-[rgba(255,255,255,0.06)]'
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? 'email-error' : undefined}
+                  value={formState.email}
+                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                  className={cn(
+                    'w-full px-4.5 py-3.5 rounded-xl bg-[#0E0E16] border text-white text-sm transition-all focus:outline-none focus:border-blue-400 focus:bg-[#12121E] shadow-inner',
+                    errors.email ? 'border-red-500' : 'border-white/[0.14]'
+                  )}
+                  placeholder="your@email.com"
+                />
+                {errors.email && (
+                  <p id="email-error" className="mt-1 text-xs text-red-400" role="alert">
+                    {errors.email}
+                  </p>
                 )}
-                placeholder="your@email.com"
-              />
-              {errors.email && (
-                <p id="email-error" className="mt-1 text-xs text-red-400" role="alert">
-                  {errors.email}
-                </p>
-              )}
-            </div>
+              </div>
 
-            <div>
-              <label htmlFor="message" className="block text-sm text-[#92929A] mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                required
-                aria-invalid={!!errors.message}
-                aria-describedby={errors.message ? 'message-error' : undefined}
-                value={formState.message}
-                onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                className={cn(
-                  'w-full px-4 py-3 rounded-xl bg-[#0A0A0C] border text-[#F5F5F5] text-sm transition-colors focus:outline-none focus:border-[#3B82F6] resize-none',
-                  errors.message ? 'border-red-500' : 'border-[rgba(255,255,255,0.06)]'
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  required
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
+                  value={formState.message}
+                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                  className={cn(
+                    'w-full px-4.5 py-3.5 rounded-xl bg-[#0E0E16] border text-white text-sm transition-all focus:outline-none focus:border-blue-400 focus:bg-[#12121E] resize-none shadow-inner',
+                    errors.message ? 'border-red-500' : 'border-white/[0.14]'
+                  )}
+                  placeholder="Tell me about your project..."
+                />
+                {errors.message && (
+                  <p id="message-error" className="mt-1 text-xs text-red-400" role="alert">
+                    {errors.message}
+                  </p>
                 )}
-                placeholder="Tell me about your project..."
-              />
-              {errors.message && (
-                <p id="message-error" className="mt-1 text-xs text-red-400" role="alert">
-                  {errors.message}
-                </p>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 text-sm font-bold text-[#070709] bg-white rounded-full hover:bg-slate-100 shadow-[0_0_25px_rgba(255,255,255,0.35)] transition-all min-h-[46px] hover:scale-105 active:scale-95"
+              >
+                <Send className="w-4 h-4" />
+                <span>Send Message</span>
+              </button>
+
+              {status && (
+                <p className="text-sm text-slate-300" role="status">{status}</p>
               )}
-            </div>
-
-            <button
-              type="submit"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-[#050505] bg-[#F5F5F5] rounded-full hover:bg-white transition-colors min-h-[44px]"
-            >
-              <Send className="w-4 h-4" />
-              Send Message
-            </button>
-
-            {status && (
-              <p className="text-sm text-[#92929A]" role="status">{status}</p>
-            )}
-          </form>
+            </form>
+          </div>
         </motion.div>
       </div>
     </SectionWrapper>

@@ -16,28 +16,28 @@ export function AboutSection() {
   return (
     <SectionWrapper id="about">
       <SectionHeading title={ABOUT_CONTENT.heading} />
-      
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-        {/* About text */}
+
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        {/* About text & Info Cards */}
         <div className="space-y-8">
-          <p className="text-[clamp(0.938rem,1.2vw,1.125rem)] text-[#92929A] leading-relaxed">
+          <p className="text-[clamp(0.938rem,1.2vw,1.125rem)] text-slate-300 leading-relaxed font-normal">
             {ABOUT_CONTENT.description}
           </p>
 
-          {/* Info cards */}
-          <div ref={cardsRef} className="grid grid-cols-2 gap-3">
+          {/* Elevated Info cards */}
+          <div ref={cardsRef} className="grid grid-cols-2 gap-3.5 sm:gap-4">
             {ABOUT_CONTENT.infoCards.map((card, i) => (
               <motion.div
                 key={card.label}
-                className="p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#0A0A0C] hover:border-[rgba(255,255,255,0.1)] transition-colors"
+                className="surface-card surface-card-hover p-4 sm:p-5 rounded-2xl flex flex-col justify-between min-h-[96px]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={cardsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <p className="text-[0.75rem] text-[#62626B] uppercase tracking-wider mb-1">
+                <p className="text-[0.72rem] text-blue-400 font-bold uppercase tracking-wider mb-1.5">
                   {card.label}
                 </p>
-                <p className="text-sm text-[#F5F5F5] font-medium">
+                <p className="text-sm sm:text-base text-white font-semibold">
                   {card.value}
                 </p>
               </motion.div>
@@ -47,25 +47,32 @@ export function AboutSection() {
 
         {/* What I Do */}
         <div>
-          <h3 className="text-lg font-semibold mb-6 text-[#F5F5F5]">What I Do</h3>
+          <h3 className="text-xl font-bold mb-6 text-white flex items-center gap-2">
+            <span>What I Do</span>
+            <span className="w-8 h-[2px] bg-gradient-to-r from-blue-500 to-transparent inline-block" />
+          </h3>
           <div className="space-y-4">
             {WHAT_I_DO.map((item, i) => {
               const Icon = whatIDoIcons[i];
               return (
                 <motion.div
                   key={item.title}
-                  className="group p-5 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#0A0A0C] hover:border-[rgba(255,255,255,0.1)] transition-all"
+                  className="surface-card surface-card-hover group p-5 sm:p-6 rounded-2xl transition-all cursor-default"
                   initial={{ opacity: 0, x: 20 }}
                   animate={cardsInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-2.5 rounded-lg bg-[#101013] border border-[rgba(255,255,255,0.06)] flex-shrink-0">
-                      <Icon className="w-5 h-5 text-[#3B82F6]" />
+                    <div className="p-3 rounded-xl bg-blue-500/15 border border-blue-400/30 text-blue-400 shadow-inner flex-shrink-0 group-hover:scale-110 transition-transform">
+                      <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-[#F5F5F5] font-medium mb-1">{item.title}</h4>
-                      <p className="text-sm text-[#92929A]">{item.description}</p>
+                      <h4 className="text-white font-bold text-base mb-1.5 group-hover:text-blue-300 transition-colors">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
                 </motion.div>

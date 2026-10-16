@@ -15,7 +15,7 @@ export function SectionHeading({ title, subtitle }: SectionHeadingProps) {
   return (
     <div ref={ref} className="mb-12 md:mb-16">
       <motion.h2
-        className="text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight leading-tight"
+        className="text-[clamp(2rem,5vw,4rem)] font-extrabold tracking-tight leading-tight text-white drop-shadow-[0_2px_15px_rgba(255,255,255,0.1)]"
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -24,7 +24,7 @@ export function SectionHeading({ title, subtitle }: SectionHeadingProps) {
       </motion.h2>
       {subtitle && (
         <motion.p
-          className="mt-4 text-[clamp(0.938rem,1.2vw,1.125rem)] text-[#92929A] max-w-2xl"
+          className="mt-4 text-[clamp(0.938rem,1.2vw,1.125rem)] text-slate-300 max-w-2xl leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}

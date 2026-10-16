@@ -43,9 +43,9 @@ export function Scene() {
       aria-hidden="true"
     >
       {/* CSS gradient fallback - always visible */}
-      <div className="absolute inset-0 bg-[#050505]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.08),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(139,92,246,0.05),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[#07070A]">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.14),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(139,92,246,0.1),transparent_60%)]" />
       </div>
 
       {/* 3D Canvas - loaded after first paint */}

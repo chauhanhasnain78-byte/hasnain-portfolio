@@ -26,23 +26,28 @@ export function SkillsSection() {
     <SectionWrapper id="skills">
       <SectionHeading title="Tools I work with." />
 
-      <div ref={ref} className="flex flex-wrap gap-3 md:gap-4 max-w-3xl">
+      <div ref={ref} className="flex flex-wrap gap-3 sm:gap-4 max-w-4xl">
         {SKILLS.map((skill, i) => (
           <motion.div
             key={skill}
-            className="group px-5 py-3 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#0A0A0C] hover:border-[rgba(255,255,255,0.12)] hover:bg-[#101013] transition-all duration-300 cursor-default min-h-[44px] flex items-center gap-2.5"
+            className="surface-pill group px-5 py-3.5 rounded-2xl cursor-default min-h-[48px] flex items-center gap-3 shadow-md"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
             transition={{
               duration: 0.5,
-              delay: i * 0.06,
+              delay: i * 0.05,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
           >
-            <span className="text-lg" aria-hidden="true">
+            <span
+              className="w-8 h-8 rounded-xl bg-white/[0.08] border border-white/[0.12] flex items-center justify-center text-base shadow-inner group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            >
               {skillIcons[skill] || '⚙️'}
             </span>
-            <span className="text-sm font-medium text-[#F5F5F5]">{skill}</span>
+            <span className="text-sm font-bold text-white tracking-wide group-hover:text-blue-300 transition-colors">
+              {skill}
+            </span>
           </motion.div>
         ))}
       </div>

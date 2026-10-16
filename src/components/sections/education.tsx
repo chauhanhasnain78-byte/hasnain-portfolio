@@ -22,27 +22,27 @@ export function EducationSection() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <div className="relative pl-8 border-l border-[rgba(255,255,255,0.06)]">
-          {/* Timeline dot */}
-          <div className="absolute left-0 top-0 -translate-x-1/2 w-3 h-3 rounded-full bg-[#3B82F6] border-2 border-[#050505]" />
+        <div className="relative pl-7 sm:pl-8 border-l-2 border-blue-500/30">
+          {/* Glowing timeline dot */}
+          <div className="absolute left-0 top-1 -translate-x-[9px] w-4 h-4 rounded-full bg-blue-500 shadow-[0_0_16px_#3B82F6] border-2 border-[#07070A]" />
 
-          <div className="p-6 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#0A0A0C]">
-            <div className="flex items-start gap-4">
-              <div className="p-2.5 rounded-lg bg-[#101013] border border-[rgba(255,255,255,0.06)] flex-shrink-0">
-                <GraduationCap className="w-5 h-5 text-[#3B82F6]" />
+          <div className="surface-card surface-card-hover p-6 sm:p-7 rounded-2xl shadow-xl">
+            <div className="flex items-start gap-4 sm:gap-5">
+              <div className="p-3.5 rounded-xl bg-blue-500/15 border border-blue-400/30 text-blue-400 shadow-inner flex-shrink-0">
+                <GraduationCap className="w-6 h-6" />
               </div>
-              <div className="space-y-2">
-                <h3 className="text-[#F5F5F5] font-semibold">
+              <div className="space-y-2.5">
+                <h3 className="text-white font-extrabold text-lg sm:text-xl tracking-tight">
                   {EDUCATION.degree}
                 </h3>
-                <p className="text-sm text-[#92929A]">
+                <p className="text-sm sm:text-base text-slate-300 font-medium">
                   {EDUCATION.institution}
                 </p>
-                <div className="flex flex-wrap gap-3 pt-1">
-                  <span className="text-xs text-[#62626B] bg-[#101013] px-3 py-1 rounded-full">
+                <div className="flex flex-wrap gap-2.5 pt-1">
+                  <span className="text-xs font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/25 px-3.5 py-1.5 rounded-full shadow-sm">
                     {EDUCATION.year}
                   </span>
-                  <span className="text-xs text-[#62626B] bg-[#101013] px-3 py-1 rounded-full">
+                  <span className="text-xs font-semibold text-slate-300 bg-[#1A1A28] border border-white/[0.12] px-3.5 py-1.5 rounded-full shadow-sm">
                     {EDUCATION.graduation}
                   </span>
                 </div>

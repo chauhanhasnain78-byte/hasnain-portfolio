@@ -1,17 +1,17 @@
 @import 'tailwindcss';
 
 :root {
-  --color-base: #050505;
-  --color-surface-1: #0A0A0C;
-  --color-surface-2: #101013;
-  --color-surface-3: #151519;
-  --color-text-primary: #F5F5F5;
-  --color-text-secondary: #92929A;
-  --color-text-muted: #62626B;
+  --color-base: #07070A;
+  --color-surface-1: #12121A;
+  --color-surface-2: #161624;
+  --color-surface-3: #1E1E30;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #CBD5E1;
+  --color-text-muted: #94A3B8;
   --color-accent-blue: #3B82F6;
   --color-accent-violet: #8B5CF6;
-  --color-border: rgba(255, 255, 255, 0.06);
-  --color-border-hover: rgba(255, 255, 255, 0.1);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-hover: rgba(255, 255, 255, 0.25);
   
   --font-sans: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -136,6 +136,41 @@ html, body {
 
 /* Outlined text utility */
 .stroke-text {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.18);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+}
+
+/* Elevated Light-Dark Surface Utilities */
+.surface-card {
+  background: rgba(18, 18, 27, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.surface-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.surface-card-hover:hover {
+  background: rgba(24, 24, 38, 0.96);
+  border-color: rgba(96, 165, 250, 0.45);
+  box-shadow: 0 16px 40px -12px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.surface-pill {
+  background: rgba(22, 22, 34, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+}
+
+.surface-pill:hover {
+  background: rgba(30, 30, 48, 0.95);
+  border-color: rgba(96, 165, 250, 0.5);
+  transform: translateY(-1px);
 }
 
