@@ -81,9 +81,9 @@ export function HeroSection({ hasProfilePhoto }: HeroSectionProps) {
       id="home"
       onMouseMove={handleMouseMove}
       onClick={triggerTapSweep}
-      className="relative min-h-[100svh] flex items-center overflow-hidden [perspective:1200px]"
+      className="relative min-h-[100svh] flex items-center overflow-hidden [perspective:1200px] pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 lg:pb-20"
     >
-      <div className="relative z-10 mx-auto max-w-[1280px] container-padding w-full py-20 lg:py-0">
+      <div className="relative z-10 mx-auto max-w-[1280px] container-padding w-full">
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-16">
           {/* Left content: Identity first */}
           <motion.div
@@ -97,7 +97,7 @@ export function HeroSection({ hasProfilePhoto }: HeroSectionProps) {
                 <motion.div
                   style={{ x: depthX, y: depthY }}
                   aria-hidden="true"
-                  className="absolute inset-0 select-none pointer-events-none text-[clamp(2.5rem,8vw,8rem)] font-extrabold leading-[0.9] tracking-tighter text-transparent stroke-text opacity-20"
+                  className="absolute inset-0 select-none pointer-events-none text-[clamp(2.25rem,5.5vw,5.5rem)] font-extrabold leading-[0.9] tracking-tighter text-transparent stroke-text opacity-20"
                 >
                   {SITE_CONFIG.name.toUpperCase()}
                 </motion.div>
@@ -105,7 +105,7 @@ export function HeroSection({ hasProfilePhoto }: HeroSectionProps) {
 
               <h1
                 aria-label={SITE_CONFIG.name.toUpperCase()}
-                className="relative text-[clamp(2.5rem,8vw,8rem)] font-extrabold leading-[0.9] tracking-tighter select-none"
+                className="relative text-[clamp(2.25rem,5.5vw,5.5rem)] font-extrabold leading-[0.9] tracking-tighter select-none"
               >
                 {nameWords.map((word, wordIndex) => (
                   <span key={wordIndex} className="inline-block mr-[0.25em]">

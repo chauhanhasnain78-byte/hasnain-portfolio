@@ -22,8 +22,8 @@ export const COLORS = {
 
 export const FONT_SIZES = {
   // clamp(min, preferred, max)
-  heroName: 'clamp(2.5rem, 8vw, 8rem)',
-  heroNameMobile: 'clamp(2rem, 10vw, 3.5rem)',
+  heroName: 'clamp(2.25rem, 5.5vw, 5.5rem)',
+  heroNameMobile: 'clamp(2rem, 8vw, 3.25rem)',
   sectionHeading: 'clamp(2rem, 5vw, 4rem)',
   cardTitle: 'clamp(1.25rem, 2.5vw, 1.75rem)',
   body: 'clamp(0.938rem, 1.2vw, 1.125rem)',

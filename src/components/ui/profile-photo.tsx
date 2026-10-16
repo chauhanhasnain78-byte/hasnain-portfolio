@@ -124,7 +124,7 @@ export function ProfilePhoto({ hasPhoto }: ProfilePhotoProps) {
               alt="Portrait of Chauhan Mohammed Hasnain"
               fill
               priority
-              className="object-cover"
+              className="object-cover object-top"
               sizes="(max-width: 768px) 80vw, (max-width: 1024px) 40vw, 360px"
             />
           ) : (
