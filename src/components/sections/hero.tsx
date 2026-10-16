@@ -148,6 +148,11 @@ export function HeroSection({ hasProfilePhoto }: HeroSectionProps) {
               </h1>
             </div>
 
+            {/* Mobile/Tablet Portrait Photo: placed directly under name per spec */}
+            <div className="lg:hidden my-4 flex justify-center sm:justify-start">
+              <ProfilePhoto hasPhoto={hasProfilePhoto} />
+            </div>
+
             {/* 2. Eyebrow Line */}
             <motion.p
               className="text-[clamp(0.688rem,1vw,0.813rem)] tracking-[0.25em] text-[#92929A] uppercase font-medium"
@@ -236,13 +241,13 @@ export function HeroSection({ hasProfilePhoto }: HeroSectionProps) {
             </motion.div>
           </motion.div>
 
-          {/* Right: Profile photo / Monogram */}
+          {/* Right: Profile photo / Monogram (Desktop & Tablet Landscape) */}
           <motion.div
             style={prefersReduced ? undefined : { y: photoParallaxY }}
-            className="mt-12 lg:mt-0 flex-shrink-0"
-            initial={{ opacity: 0, scale: 0.92, filter: 'blur(10px)' }}
-            animate={isInView ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : {}}
-            transition={{ duration: 0.85, delay: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="hidden lg:block mt-12 lg:mt-0 flex-shrink-0"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.85, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <ProfilePhoto hasPhoto={hasProfilePhoto} />
           </motion.div>

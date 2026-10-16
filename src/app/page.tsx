@@ -11,7 +11,7 @@ import { publicFileExists } from '@/lib/check-file';
 
 export default function Home() {
   // Server-side file checks
-  const hasProfilePhoto = publicFileExists('images/profile-photo.jpg');
+  const hasProfilePhoto = true;
   const hasResumePdf = publicFileExists('resume/hasnain-resume.pdf');
   const hasSocialCvPreview = publicFileExists('images/social-cv-preview.png');
   const hasNavindiaPreview = publicFileExists('images/navindia-preview.png');
